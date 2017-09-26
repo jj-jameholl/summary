@@ -1,0 +1,8 @@
+git diff 2.txt  可以查看已修改并还没有add的2.txt（显示在modify中）与上个版本的2.TXT(也就是已经commit)的不同，add了2.txt后就看不了了。可以看成diff是和最近的commit或者add相比较，这一点和gitchectout如出一辙
+git log -p 2.txt 可以查看2.txt的历史修改记录，git log --pretty=oneline
+git reset --hard 更换版本的时候，commit只保存了暂存区的数据，也就是已经add过得文件可以通过版本切换找回，不过如果只是修改了但是没有add的文件就没办法了，另外新建了一个文件在任何一个版本都能找到，换句话说，如果你想讲一个文件的改变加入版本中，必须add&commit这个文件
+git chectout -b dev新建一个分支，如果在同一台电脑上创建分支，那么在一个分支上对一个文件进行修改，在其他分支上也能看到，除非add&commit了，（commit之前，两个分支的修改都是同步的，包括add到暂存区）如果在dev上进行修改，但是在master上进行add&commit，那么这次修改算master的，dev上没有记录也没有修改
+git reset HEAD filename 可以将暂存区的文件清楚，不小心add了可以返回，进阶是将暂存区的清楚，如果add后又改变了该文件，reset后不会用暂存区的文件将为暂存的覆盖
+git stash可以将正在进行的工作状态进行保存，如果写到一半，要处理其他事物，可以将现在修改的文件保存起来，现在工作区就是前一个commit时的状态，这次的修改都被保存起来隐藏了。git stash list可以看到当前所有的工作状态，使用git stash apply可以恢复工作状态，恢复指定的使用git stash apply stash@{0}，不过之前add的文件会被清出暂存区，展示在modify but no stage中，恢复完后可以使用git stash drop删除这个工作状态
+$ git remote add origin git@github.com:michaelliao/learngit.git 添加一个远程库，并命名为origin，光添加一个地址还不行，需要将自己的公钥上传到该github账号中，这样才能进行后续的pull，push等操作
+$ git push <远程主机名> <本地分支名>:<远程分支名>   $ git pull <远程主机名> <远程分支名>:<本地分支名>   通过给本地分支与远程分支建立追踪关系：$ git branch --set-upstream master origin/next，下次push或pull是可以忽略不写分支，只需git pull origin/push origin
