@@ -5,3 +5,21 @@ $a[0]++;
 print_r($a);
 print_r($arr);
 print_r($arr1);
+
+输出 array(2) array(2) array(1)
+这个好理解，a和arr是引用类型，zval中没存数据，存的reference指针，即a&arr ->zavl中指针（zend_reference(count=2)）->zend_array1();最终指向同一个zend_array（），arr1是通过zavl中指针（zend_array()）->zend_array1(),同样是同一个zend_array()，这就是p7优化p5的一点，当值发生改变是再分裂出zend_array2();引用类型的一起变，传值类型只变一个。
+
+下面这种情况就比较坑爹。
+
+$arr = array(1);
+$a = & $arr[0];
+$arr1 = $arr;
+$a[0]++;
+print_r($a);
+print_r($arr);
+print_r($arr1);
+
+只引用数组的一个元素而不是整个数组是什么情况，因为不是整个引用，因此zend_reference并没有调用，arr1是通过zval中zend_array()指针指向zend_array(),不过zend_array()内部可不是之前那样了，细看zend_array()内部第一个元素1，可以看做一个普通类型，a其实就是引用的他，类似于：
+$a = 1;
+$b = & $b
+也就是说arr[1],是zend_referend(count=2)->zavl(1),注意这个zval现在是直接嵌套在zend_reference中，然后现在arr1也是通过zavl指针指向同一个zend_array();,当改变arr[1]中的值时，因为zend_reference的存在，且三个变量都指向同一个zend_array(),这个值三个是一起改变，因此不会分裂。
