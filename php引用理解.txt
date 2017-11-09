@@ -1,0 +1,7 @@
+$arr = array(1);
+$a = & $arr;
+$arr1 = $arr;
+$a[0]++;
+print_r($a);
+print_r($arr);
+print_r($arr1);
