@@ -23,3 +23,8 @@ print_r($arr1);
 $a = 1;
 $b = & $b
 也就是说arr[1],是zend_referend(count=2)->zavl(1),注意这个zval现在是直接嵌套在zend_reference中，然后现在arr1也是通过zavl指针指向同一个zend_array();,当改变arr[1]中的值时，因为zend_reference的存在，且三个变量都指向同一个zend_array(),这个值三个是一起改变，因此不会分裂。
+$arr: (refcount=1, is_ref=0)=array (0 => (refcount=2, is_ref=1)=1)
+array(1) refcount(3){
+  [0]=>
+  &int(1)
+}
