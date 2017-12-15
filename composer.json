@@ -1,0 +1,33 @@
+{  
+  "name": "jj-jameholl/testgit",  
+  "description": "Yii2 jj-jameholl testgit",  
+  "keywords": [  
+    "yii2",  
+    "testgit"  
+  ],  
+  "homepage": "https://github.com/jj-jameholl/testgit",  
+  "type": "yii2-extension",  
+  "license": "MIT",  
+  "support": {  
+    "source": "https://github.com/jj-jameholl/testgit"  
+  },  
+  "authors": [  
+    {  
+      "name": "jj-jameholl",  
+      "email": "jjameholl@gmail.com"  
+    }  
+  ],  
+  "minimum-stability": "stable",  
+  "require": {  
+    "php": ">=5.4.0",  
+    "yiisoft/yii2": ">=2.0.6"  
+     
+  },  
+  "autoload": {  
+    "psr-4": {  
+    }  
+  },  
+  "config": {  
+    "process-timeout": 1800  
+  }  
+}
