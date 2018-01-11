@@ -15,3 +15,5 @@ http://www.chinaz.com/program/2015/0424/401376.shtml
   
   
   apache工作模式：http://blog.csdn.net/STFPHP/article/details/52954303
+
+  那么我的理解是nginx的epoll模式是部分异步非阻塞，这只针对epoll这个机制这个函数，但是处理请求整个过程是同步阻塞的，阻塞是说通过i/o套接字读数据是阻塞的，同步时因为需要等待数据读完才返回
