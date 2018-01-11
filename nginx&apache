@@ -11,3 +11,7 @@ http://www.chinaz.com/program/2015/0424/401376.shtml
   可读写的就返回，注意次数返回的套接字必然是可以直接读写没有阻塞的了，epoll做的事情是一样，不过他使用事件机制，本身不会引起阻塞，不用去轮询。
   
   select/poll属于i/o模型中i/o复用，即一次课检测多个套接字，epoll其实也属于该类型，只是有了第四种模型：信号驱动的一部分机制，对于高i/o应用性能更加
+  
+  
+  
+  apache工作模式：http://blog.csdn.net/STFPHP/article/details/52954303
