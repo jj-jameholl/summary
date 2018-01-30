@@ -2,6 +2,7 @@ https://www.cnblogs.com/ck1020/p/6669661.html
 http://www.cnblogs.com/Anker/p/7071849.html
 http://blog.csdn.net/mmshixing/article/details/51848673
 http://www.chinaz.com/program/2015/0424/401376.shtml
+http://vdisk.weibo.com/s/dbMpuweRAhLo7
 能达到这种效果，是因为在内核实现中 epoll 是根据每个 sockfd 上面的与设备驱动程序建立起来的回调函数实现的。那么，某个 sockfd 上的事件发生时，与它对应的回
 调函数就会被调用，来把这个 sockfd 加入链表，其他处于“空闲的”状态的则不会。在这点上，epoll 实现了一个”伪”AIO。
 
