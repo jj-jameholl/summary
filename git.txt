@@ -11,3 +11,4 @@ git branch -a 可以查看所有分支信息，包括远程fetch的
 .gitignore文件只对从未追踪过得文件其效果，即从未add或者commit的文件，如果想对已经追踪过得文件进行忽略，使用git rm --cached filename,然后commit即可
 git pull origin <远程分支>:<本地分支> = git fetch + get merge，如果不想用merge,可以使用git pull --rebase origin <远程分支>：<本地分支>，git fetch origin表示将远程所有分支都拉回来更新，如果只想更新某一个分支，使用git fetch origin <远程分支名>,在本地使用git branch -r 可以查看拉回来的远程分支，例如/origin/master,origin/dev等等，然后使用git merge origin/master将当前分支与远程master分支合并，当然git rebase会更好，使用merge合并，最后解决冲突会多出一个commit，并且远程提交和本地提交时严格按照时间来整合的，而使用rebase原理是先将本地提交缓存取消，更新原始本地与远程的提交，然后再将本地提交合并上去，因此顺序并不安时间排序。
 git log -p --grep=pgsql修改   可以展示commit名为pgsql的所有文件修改，更多看文档
+git checkout -b branch origin/branch 拉取远程分支并在本地创建新分支
